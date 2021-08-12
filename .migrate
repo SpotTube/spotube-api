@@ -1,0 +1,17 @@
+{
+  "lastRun": "1623681037518-add_lastMessage_convos.js",
+  "migrations": [
+    {
+      "title": "1622293314145-update_profile.js",
+      "timestamp": 1623683485881
+    },
+    {
+      "title": "1623078519118-add_user_participant.js",
+      "timestamp": 1623683705654
+    },
+    {
+      "title": "1623681037518-add_lastMessage_convos.js",
+      "timestamp": 1623767043652
+    }
+  ]
+}

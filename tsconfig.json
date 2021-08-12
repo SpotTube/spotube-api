@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "target": "es6",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ]
+    },
+    "incremental": true,
+    "types": [
+      "@types/passport-jwt",
+      "@types/passport-local",
+      "@types/mongoose-paginate",
+      "@types/multer",
+      "@types/minio",
+      "@types/lodash",
+      "@types/passport-google-oauth20"
+    ]
+  }
+}

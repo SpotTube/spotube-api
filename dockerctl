@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+COMPOSE="docker compose -f docker-compose.yml"
+APP="api"
+if [[ $# -gt 0 ]]; then
+    if [[ "$1" == "start" ]]; then
+        ${COMPOSE} up --build -d
+    elif [[ "$1" == "start:dev" ]]; then
+        ${COMPOSE} down && ${COMPOSE} up -d && $COMPOSE exec $APP yarn start:dev
+    elif [[ "$1" == "stop" ]]; then
+        ${COMPOSE} down
+    elif [[ "$1" == "update" ]]; then
+        ${COMPOSE} pull && ${COMPOSE} down && ${COMPOSE} up -d
+    elif [[ "$1" == "status" ]]; then
+        ${COMPOSE} ps
+    elif [[ "$1" == "restart" ]]; then
+        ${COMPOSE} down && ${COMPOSE} up -d
+    elif [[ "$1" == "destroy" ]]; then
+        ${COMPOSE} down --volumes --remove-orphans --rmi local
+    elif [ "$1" == "install" ]; then
+        ${COMPOSE} exec -T $APP yarn install
+    elif [ "$1" == "run" ]; then
+        shift 1
+        ${COMPOSE} exec -T $APP yarn "$@"
+    elif [ "$1" == "dump" ]; then
+        shift 1
+        ${COMPOSE} exec -T mongo sh -c 'mongodump -d test --archive --authenticationDatabase admin -u admin -p admin' >./dump/db.dmp
+    elif [ "$1" == "restore" ]; then
+        shift 1
+        ${COMPOSE} exec -T mongo sh -c 'mongorestore -d test --archive --authenticationDatabase admin -u admin -p admin' <./dump/db.dmp
+    else
+        ${COMPOSE} "$@"
+    fi
+else
+    ${COMPOSE}
+fi

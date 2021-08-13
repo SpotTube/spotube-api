@@ -14,12 +14,15 @@ import { TransformInterceptor } from '~/shared/interceptor/transform.interceptor
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { YoutubeModule } from './modules/youtube/youtube.module';
+import { SongModule } from './modules/song/song.module';
+import { ArtistModule } from './modules/artist/artist.module';
+import { AlbumModule } from './modules/album/album.module';
 
 @Module({
   imports: [
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
-    }),
+    // ServeStaticModule.forRoot({
+    //   rootPath: join(__dirname, '..', 'public'),
+    // }),
     ConfigModule.forRoot({
       isGlobal: true,
       expandVariables: true,
@@ -30,7 +33,9 @@ import { YoutubeModule } from './modules/youtube/youtube.module';
     }),
     UserModule,
     AuthModule,
-    YoutubeModule,
+    SongModule,
+    ArtistModule,
+    AlbumModule,
   ],
   controllers: [AppController],
   providers: [

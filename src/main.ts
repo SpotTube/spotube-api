@@ -1,9 +1,10 @@
 declare const module: any;
+import * as dotenv from 'dotenv';
+dotenv.config();
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
-import * as dotenv from 'dotenv';
-dotenv.config();
+
 // import { RedisIoAdapter } from './adapter/socket-redis.adapter';
 
 async function bootstrap() {

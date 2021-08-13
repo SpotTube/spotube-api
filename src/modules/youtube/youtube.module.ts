@@ -5,5 +5,6 @@ import { YoutubeController } from './youtube.controller';
 @Module({
   controllers: [YoutubeController],
   providers: [YoutubeService],
+  exports: [YoutubeService],
 })
 export class YoutubeModule {}

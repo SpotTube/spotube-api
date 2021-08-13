@@ -5,9 +5,4 @@ import { YoutubeService } from './youtube.service';
 @Controller('search')
 export class YoutubeController {
   constructor(private readonly YoutubeService: YoutubeService) {}
-
-  @Get()
-  search(@Query() filter: any) {
-    return this.YoutubeService.search(filter);
-  }
 }

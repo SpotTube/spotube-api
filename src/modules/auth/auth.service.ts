@@ -44,7 +44,7 @@ export class AuthService {
         fbProfileId: userProfile.id,
         email: userProfile.email,
         profile: { fullName: userProfile.name },
-        platform: EUserPlatform.FACEBOOK,
+        // platform: EUserPlatform.FACEBOOK,
         avatar: get(userProfile, 'picture.data.url'),
       });
     }
@@ -68,7 +68,7 @@ export class AuthService {
         password: Math.random().toString(36).substr(2, 8),
         email: payload.email,
         profile: { fullName: payload.name },
-        platform: EUserPlatform.GOOGLE,
+        // platform: EUserPlatform.GOOGLE,
         googleUserId: payload.sub,
         emailVerified: payload.email_verified,
         avatar: payload.picture,

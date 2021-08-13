@@ -47,7 +47,6 @@ export class FacebookStrategy {
               fbProfileId: profile.id,
               email,
               profile: { fullName: profile.displayName },
-              platform: EUserPlatform.FACEBOOK,
               avatar: get(providerData, 'picture.data.url'),
             });
 

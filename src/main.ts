@@ -1,3 +1,4 @@
+declare const module: any;
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
@@ -12,5 +13,10 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   await app.listen(configService.get('APP_PORT'));
+
+  if (module.hot) {
+    module.hot.accept();
+    module.hot.dispose(() => app.close());
+  }
 }
 bootstrap();

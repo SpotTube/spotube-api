@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import * as bcrypt from 'bcryptjs';
-import { EUserPlatform } from 'src/types/User';
 import { SCHEMA_OPTIONS } from 'src/db/config';
 
 const saltOrRounds = 10;
@@ -27,11 +26,6 @@ export class User {
     unique: true,
   })
   email: string;
-
-  @Prop({
-    default: EUserPlatform.LOCAL,
-  })
-  platform: EUserPlatform;
 
   @Prop({ type: Profile })
   profile: Profile;

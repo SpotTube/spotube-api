@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty, IsEmail, MinLength } from 'class-validator';
-import { EUserPlatform } from 'src/types/User';
+// import { EUserPlatform } from 'src/types/User';
 export class UserCreateDTO {
   @IsNotEmpty()
   @IsEmail({}, { message: 'Email is not valid' })
@@ -10,7 +10,6 @@ export class UserCreateDTO {
   @MinLength(6, { message: 'Password min 6 character' })
   password: string;
 
-  platform?: EUserPlatform;
   avatar?: string;
   fbProfileId?: string;
   googleUserId?: string;

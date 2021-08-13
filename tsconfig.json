@@ -24,7 +24,6 @@
       "@types/multer",
       "@types/minio",
       "@types/lodash",
-      "@types/passport-google-oauth20"
     ]
   }
 }

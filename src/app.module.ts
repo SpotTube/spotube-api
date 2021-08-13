@@ -13,6 +13,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { TransformInterceptor } from '~/shared/interceptor/transform.interceptor';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { YoutubeModule } from './modules/youtube/youtube.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { join } from 'path';
     }),
     UserModule,
     AuthModule,
+    YoutubeModule,
   ],
   controllers: [AppController],
   providers: [

@@ -46,6 +46,7 @@
     "cross-env": "^7.0.3",
     "fb": "^2.0.0",
     "google-auth-library": "^7.2.0",
+    "googleapis": "^84.0.0",
     "lodash": "^4.17.21",
     "minio": "^7.0.18",
     "mongoose": "^5.12.5",
@@ -60,7 +61,8 @@
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^6.6.6"
+    "rxjs": "^6.6.6",
+    "youtube-dl-exec": "^1.2.4"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.6.0",

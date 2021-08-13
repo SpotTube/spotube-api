@@ -1,4 +1,4 @@
-import { PAGINATE_LIMIT } from './../constants/data';
+import { ITEMS_PER_PAGE } from './../constants/data';
 import * as MongoosePaginate from 'mongoose-paginate-v2';
 const customLabels = {
   totalDocs: 'totals',
@@ -15,7 +15,7 @@ const customLabels = {
 };
 (MongoosePaginate as any).paginate.options = {
   lean: true,
-  limit: PAGINATE_LIMIT,
+  limit: ITEMS_PER_PAGE,
   page: 1,
   customLabels,
 };

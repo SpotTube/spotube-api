@@ -6,7 +6,7 @@ if [[ $# -gt 0 ]]; then
     if [[ "$1" == "start" ]]; then
         ${COMPOSE} up --build -d
     elif [[ "$1" == "start:dev" ]]; then
-        ${COMPOSE} down && ${COMPOSE} up -d && $COMPOSE exec $APP yarn start:dev
+        ${COMPOSE} up -d && $COMPOSE exec $APP yarn start:dev
     elif [[ "$1" == "stop" ]]; then
         ${COMPOSE} down
     elif [[ "$1" == "update" ]]; then

@@ -1,14 +1,17 @@
 declare const module: any;
 import * as dotenv from 'dotenv';
 dotenv.config();
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
+import { JwtAuthGuard } from './modules/auth/jwt-auth.guard';
 
 // import { RedisIoAdapter } from './adapter/socket-redis.adapter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const reflector = app.get(Reflector);
+  app.useGlobalGuards(new JwtAuthGuard(reflector));
   app.enableCors({ allowedHeaders: '*', exposedHeaders: '*' });
   // app.useWebSocketAdapter(new SocketIoAdapter(app, true));
 

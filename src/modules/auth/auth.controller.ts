@@ -9,17 +9,19 @@ import {
   Query,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { Public } from '~/shared/pipe/metaData';
 import { ILoginForm } from '../user/interfaces/user.interface';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
+@Public()
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('login')
   async login(@Body() user: ILoginForm, @Res() res: Response) {
     const { data } = await this.authService.login(user);
-    console.log('ok');
+
     res.set('Authorization', 'Bearer ' + data.accessToken);
     res.cookie('token', data.accessToken);
     res.status(HttpStatus.OK).send({
@@ -50,7 +52,6 @@ export class AuthController {
   // ggre() {
   //   return 'ok';
   // }
-  
 
   @Delete('logout')
   async logout(@Res() res: Response) {

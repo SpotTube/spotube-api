@@ -1,3 +1,4 @@
+import { Param } from '@nestjs/common';
 import { Controller, Get, Query } from '@nestjs/common';
 import { ValidationPipe } from '~/shared/pipe/validation.pipe';
 import { YoutubeSearchParams } from '../youtube/dto/YoutubeSearchParam';
@@ -10,5 +11,10 @@ export class SongController {
   @Get('search')
   search(@Query(new ValidationPipe()) filter: YoutubeSearchParams) {
     return this.songService.search(filter);
+  }
+
+  @Get(':id')
+  get(@Param('id') id: string) {
+    return this.songService.get(id);
   }
 }

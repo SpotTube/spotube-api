@@ -3,10 +3,16 @@ import { youtube_v3 } from 'googleapis';
 import { YoutubeService } from '../youtube/youtube.service';
 import { ITEMS_PER_PAGE } from '~/shared/constants/data';
 import { MUSIC_CATEGORY_ID, MUSIC_TOPIC_ID } from '../youtube/youtube.constant';
+import { YoutubeDlService } from '../youtube-dl/youtube-dl.service';
+import { Song } from '~/types/Song';
+import { plainToClass } from 'class-transformer';
 
 @Injectable()
 export class SongService {
-  constructor(private youtubeService: YoutubeService) {}
+  constructor(
+    private readonly youtubeService: YoutubeService,
+    private readonly youtubeDlService: YoutubeDlService,
+  ) {}
 
   get defaultSearchParameter(): youtube_v3.Params$Resource$Search$List {
     return {
@@ -35,5 +41,20 @@ export class SongService {
       ...paginate,
       items: videos,
     };
+  }
+
+  async get(id: string): Promise<Song> {
+    const [{ data: videos }, stream] = await Promise.all([
+      this.youtubeService.videos({
+        part: ['snippet', 'contentDetails', 'statistics'],
+        id: [id],
+      }),
+      this.youtubeDlService.get(id),
+    ]);
+    return plainToClass(
+      Song,
+      { ...videos.items[0], stream },
+      { excludeExtraneousValues: true },
+    );
   }
 }

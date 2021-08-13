@@ -1,14 +1,23 @@
 FROM node:12
 
-RUN useradd -d /home/ubuntu -ms /bin/bash -g root -G sudo -p ubuntu ubuntu
+# RUN useradd -d /home/ubuntu -ms /bin/bash -g root -G sudo -p ubuntu ubuntu
+ENV WORK_DIR /usr/src/app
+RUN  mkdir -p $WORK_DIR
+RUN chmod 777 /usr/local/bin
+RUN mkdir -p /data/db  
 
-RUN  mkdir -p /usr/src/app && chown ubuntu /usr/src/app
-RUN mkdir -p /data/db && chown ubuntu /data/db 
+RUN apt-get update || : && apt-get install python -y
 
-WORKDIR /usr/src/app
-RUN npm install -g ts-node
-RUN npm install -g migrate 
+WORKDIR ${WORK_DIR}
 
+RUN  curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+RUN  chmod a+rx /usr/local/bin/youtube-dl
+
+
+# RUN npm install -g ts-node
+# RUN npm install -g migrate 
+
+# ENV YOUTUBE_DL_DIR /usr/local/bin/
 # COPY package*.json ./
 # # Install nest cli
 # RUN yarn add global @nestjs/cli

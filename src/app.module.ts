@@ -17,6 +17,7 @@ import { YoutubeModule } from './modules/youtube/youtube.module';
 import { SongModule } from './modules/song/song.module';
 import { ArtistModule } from './modules/artist/artist.module';
 import { AlbumModule } from './modules/album/album.module';
+import { YoutubeDlModule } from './modules/youtube-dl/youtube-dl.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { AlbumModule } from './modules/album/album.module';
     SongModule,
     ArtistModule,
     AlbumModule,
+    YoutubeDlModule,
   ],
   controllers: [AppController],
   providers: [

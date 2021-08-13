@@ -20,6 +20,9 @@ export class YoutubeService {
 
   async videos(filter: youtube_v3.Params$Resource$Videos$List) {
     try {
+      console.log('====================================');
+      console.log('videos');
+      console.log('====================================');
       return youtube.videos.list({
         part: ['snippet', 'contentDetails'],
         regionCode: 'VN',

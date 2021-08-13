@@ -40,6 +40,8 @@ services:
       - ${APP_PORT}:${APP_PORT}
     volumes:
       - .:/usr/src/app
+    environment:
+      - YOUTUBE_DL_DIR=/usr/local/bin/
     tty: true
     depends_on:
       - mongo

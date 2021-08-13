@@ -1,6 +1,8 @@
 declare const module: any;
 import * as dotenv from 'dotenv';
 dotenv.config();
+import 'reflect-metadata';
+
 import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';

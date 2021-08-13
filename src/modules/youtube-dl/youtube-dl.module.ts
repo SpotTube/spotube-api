@@ -4,6 +4,7 @@ import { YoutubeDlController } from './youtube-dl.controller';
 
 @Module({
   controllers: [YoutubeDlController],
-  providers: [YoutubeDlService]
+  providers: [YoutubeDlService],
+  exports: [YoutubeDlService],
 })
 export class YoutubeDlModule {}
